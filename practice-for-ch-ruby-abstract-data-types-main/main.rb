@@ -55,5 +55,12 @@ class Map
         end
     end
 
+    def delete(key)
+        @ivar.each do |i|
+            if i[0] == key
+                @ivar.delete(i)
+            end
+        end
+    end
 end
 
