@@ -38,5 +38,22 @@ class Queue
     end
 end
 
+class Map
+    def initialize
+        @ivar = []
+    end
 
+    def set(key, value)
+        @ivar << [key, value]
+    end
+
+    def get(key)
+        @ivar.each do |i|
+            if i[0] == key
+                return i[1]
+            end
+        end
+    end
+
+end
 
