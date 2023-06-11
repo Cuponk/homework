@@ -1,3 +1,5 @@
+require 'set'
+
 class GraphNode
     attr_accessor :value, :neighbors
 
@@ -22,8 +24,16 @@ def bfs(starting_node, target_value, mem = Set.new())
     queue = []
     queue << starting_node
     while !queue.empty?
-        if starting_node.value == target_value
-            return starting_node.value
+        temp = queue.shift
+        if !temp.value == target_value
+            mem.add(temp)
+        elsif temp.value == target_value
+            return temp.value
         end
+        return nil if temp.neighbors.all? { |i| mem.include?(i) }
+        temp.neighbors.each { |i| queue << i if !mem.include?(i) }
     end
 end
+
+p bfs(a, 'b')
+p bfs(a, "f")
