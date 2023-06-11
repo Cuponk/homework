@@ -22,6 +22,8 @@ def bfs(starting_node, target_value, mem = Set.new())
     queue = []
     queue << starting_node
     while !queue.empty?
-        
+        if starting_node.value == target_value
+            return starting_node.value
+        end
     end
 end
